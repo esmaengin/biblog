@@ -17,3 +17,17 @@ app.get("/", (req, res)=>{
 
 const PORT = process.env.PORT || 5000;
 
+const CONNECTION_URL = "mongodb+srv://esmengn:Esma123@cluster0.vlgjwev.mongodb.net/?retryWrites=true&w=majority"
+mongoose
+.connect(CONNECTION_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server is running on port: ${PORT}`);
+    })
+})
+.catch(error => {
+    console.error(error.message);
+});
