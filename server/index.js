@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import postRoutes from "./routes/posts.js";
 
 const app = express();
 dotenv.config(); //.env dosyasının içeriğini process env. e aktarır
@@ -17,6 +18,8 @@ app.get("/", (req, res)=>{
         message: "Hellööö world!",
     });
 });
+
+app.use("/posts", postRoutes);
 
 const PORT = process.env.PORT || 5000;
 
